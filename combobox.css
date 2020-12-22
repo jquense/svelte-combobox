@@ -1,0 +1,125 @@
+/* putting it on HTML so :root overrides */
+html {
+  --cbo-text-color: var(--cbo-text-color, #333);
+  --cbo-border-color: #cccccc;
+  --cbo-border: 1px solid var(--cbo-border-color);
+
+  --cbo-hover-color: var(--cbo-text-color);
+  --cbo-focus-color: var(--cbo-text-color);
+  --cbo-focus-bg-color: rgba(
+    var(--cbo-focus-bg-rgb, 0, 0, 0),
+    var(--cbo-focus-bg-opacity, 0.25)
+  );
+
+  --cbo-input-height: 30px;
+  --cbo-input-padding-inline-start: 16px;
+  --cbo-input-padding-inline-end: 16px;
+
+  --cbo-caret-padding-inline-start: 8px;
+  --cbo-caret-padding-inline-end: 8px;
+}
+
+.combobox {
+  display: inline-block;
+  position: relative;
+}
+
+.autocomplete {
+  display: inline-flex;
+  border: var(--cbo-border);
+  color: var(--cbo-text-color);
+  border-radius: var(--cbo-border-radius, 4px);
+}
+
+.autocomplete:focus-within {
+  outline: none;
+  box-shadow: var(--cbo-focus-ring, 0px 0px 0px 2px rgb(75, 75, 230));
+}
+
+.autocomplete-caret {
+  all: unset;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: var(--cbo-caret-color, currentColor);
+  border-left: var(--cbo-caret-border, var(--cbo-border));
+  padding: 0 var(--cbo-caret-padding-inline-start) 0
+    var(--cbo-caret-padding-inline-end);
+}
+
+.autocomplete-caret:hover {
+  background: var(
+    --cbo-caret-hover-color,
+    rgba(
+      var(--cbo-caret-hover-rgb, 0, 0, 0),
+      var(--cbo-caret-hover-alpha, 0.15)
+    )
+  );
+}
+
+.autocomplete-caret:active {
+  background: var(
+    --cbo-caret-active-color,
+    rgba(
+      var(--cbo-caret-active-rgb, 0, 0, 0),
+      var(--cbo-caret-active-alpha, 0.35)
+    )
+  );
+}
+
+.autocomplete-caret:disabled {
+  background: var(--cbo-caret-disabled-color, rgba(0, 0, 0, 0.15));
+  opacity: var(--cbo-caret-disabled-opacity, 0.5);
+}
+
+.autocomplete-input {
+  all: unset;
+  flex: 1 1 auto;
+  text-align: left;
+  color: var(--cbo-input-color, var(--cbo-text-color));
+  height: var(--cbo-input-height);
+  padding: 0 var(--cbo-input-padding-inline-start) 0
+    var(--cbo-input-padding-inline-end);
+}
+
+.autocomplete-option {
+  outline: none;
+  cursor: pointer;
+  padding: var(--cbo-option-padding-block-start, 4px)
+    var(--cbo-option-padding-inline-start, 16px)
+    var(--cbo-option-padding-block-end, 4px)
+    var(--cbo-option-padding-inline-end, 16px);
+}
+
+.autocomplete-option:hover {
+  color: var(--cbo-hover-color, var(--cbo-text-color));
+  background-color: var(
+    --cbo-option-hover-color,
+    rgba(var(--cbo-hover-bg-rgb, 0, 0, 0), var(--cbo-hover-bg-opacity, 0.15))
+  );
+}
+
+.autocomplete-option-focused {
+  color: var(--cbo-focus-color);
+  background-color: var(--cbo-focus-bg-color);
+}
+
+.autocomplete-list {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: var(--cbo-list-bg-color, white);
+  max-height: var(--cbo-list-max-height, 200px);
+  overflow: auto;
+}
+
+.autocomplete-popup {
+  width: 100%;
+  overflow: hidden;
+  z-index: var(--cbo-popup-zindex, 1000);
+  border-radius: var(--cbo-border-radius, 4px);
+  border: var(--cbo-popup-border, var(--cbo-border));
+  background-color: var(--cbo-popup-bg-color, white);
+  box-shadow: var(--cbo-popup-box-shadow, 2px 5px 9px 0px rgba(0, 0, 0, 0.25));
+}
